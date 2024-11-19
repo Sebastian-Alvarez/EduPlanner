@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+
+    <ul>
+        <li><a href="{% url 'home' %}">Inicio</a></li>
+        {% if not user.is_authenticated %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+        {% else %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% endif %}
+        <li><a href="{% url 'singup' %}">Sing Up</a></li>
+    </ul>
+
+    {% block main %}
+
+    {% endblock %}
+
+</body>
+</html>
