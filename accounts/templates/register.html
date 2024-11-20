@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<h1>Sign up</h1>
+
+{% comment %}     Formulario para la Creación de una Cuenta   {% endcomment %}
+<form method="post" action="{% url 'register' %}">
+    {% csrf_token %}
+    {{ form }}
+
+    <button type="submit">Registrar Usuario</button>
+</form>
+
+{% comment %}          Imprimen los mensajes de Error        {% endcomment %}
+
+{% if messages %}
+    <br>
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+{% endif %}
+
+{% endblock %}
